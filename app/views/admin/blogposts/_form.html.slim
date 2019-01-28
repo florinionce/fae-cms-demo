@@ -1,0 +1,16 @@
+= simple_form_for(['admin', @item]) do |f|
+  == render 'fae/shared/form_header', header: @klass_name
+
+  main.content
+    = fae_input f, :title
+    = fae_input f, :slug
+    = fae_input f, :introduction, markdown: true
+    = fae_input f, :body, markdown: true
+    = fae_input f, :date
+
+    = fae_association f, :blogpost_category
+
+    = fae_image_form f, :main_image
+
+    = f.input :keywords, collection: ['awesome', 'such', 'much', 'wow'].map { |i| [i, i] }, input_html: { multiple: true }
+
